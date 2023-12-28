@@ -1,18 +1,22 @@
-from dagster._core.definitions.external_asset import (
-    create_external_asset_from_source_asset,
-)
+import warnings
+
 from dagster import (
     Definitions,
     EnvVar,
+    ExperimentalWarning,
     FilesystemIOManager,
 )
+from dagster._core.definitions.external_asset import (
+    create_external_asset_from_source_asset,
+)
 
-from .assets import pdv_sources, processed_pdv_data
-from .jobs import pdv_job
-from .partitions import pdv_partition
-from .resources import GirderConnection, GirderCredentials
-from .resources.io_manager import ConfigurableGirderIOManager
-from .sensors import make_girder_folder_sensor
+warnings.filterwarnings("ignore", category=ExperimentalWarning)  # noqa: E402
+from .assets import pdv_sources, processed_pdv_data  # noqa: E402
+from .jobs import pdv_job  # noqa: E402
+from .partitions import pdv_partition  # noqa: E402
+from .resources import GirderConnection, GirderCredentials  # noqa: E402
+from .resources.io_manager import ConfigurableGirderIOManager  # noqa: E402
+from .sensors import make_girder_folder_sensor  # noqa: E402
 
 defs = Definitions(
     assets=[
