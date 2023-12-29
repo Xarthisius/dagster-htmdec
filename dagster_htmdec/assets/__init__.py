@@ -13,7 +13,7 @@ from ..resources import GirderConnection
 
 @observable_source_asset
 def input_spreadsheet(girder: GirderConnection):
-    fobj = girder.get_file_from_item("PLACEHOLDER")
+    fobj = girder.get_file_from_item("658ef64469aa36c4df5b291a")
     return DataVersion(fobj["sha512"])
 
 
@@ -23,7 +23,7 @@ def input_spreadsheet(girder: GirderConnection):
     check_specs=[AssetCheckSpec(name="no_NaNs", asset="versioned_spreadsheet")],
 )
 def versioned_spreadsheet(girder: GirderConnection) -> Output[pd.DataFrame]:
-    fobj = girder.get_file_from_item("PLACEHOLDER")
+    fobj = girder.get_file_from_item("658ef64469aa36c4df5b291a")
     df = pd.read_csv(girder.get_stream(fobj["itemId"]))
     yield Output(df, data_version=DataVersion(fobj["sha512"]))
 
