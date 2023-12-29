@@ -5,10 +5,7 @@ setup(
     packages=find_packages(exclude=["dagster_htmdec_tests"]),
     install_requires=[
         "dagster",
-        "dagster-docker",
         "girder-client",
-        "matplotlib",
-        "numpy",
         "pandas",
     ],
     extras_require={"dev": ["dagster-webserver", "pytest"]},
